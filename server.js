@@ -71,6 +71,19 @@ app.post('/api/v1/sets', (request, response) => {
     });
 });
 
+app.delete('/api/v1/sets/:id', (request, response) => {
+  const { id } = request.params;
+  database('sets')
+    .where({ inc_id: id })
+    .del()
+    .then(set => {
+      response.status(201).json({ inc_id: id })
+    })
+    .catch(error => {
+      response.status(422).json({ error })
+    })
+})
+
 // themes
 app.get('/api/v1/themes', (request, response) => {
   database('themes').select()
