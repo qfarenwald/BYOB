@@ -41,9 +41,6 @@ app.get('/api/v1/sets/:id', (request, response) => {
           error: 'The set data you are looking for can not be found. Please try another set id.'
         });
       }
-      return selectedSet
-    })
-    .then((selectedSet) => {
       response.status(200).json(selectedSet);
     })
     .catch((error) => {
@@ -71,6 +68,19 @@ app.post('/api/v1/sets', (request, response) => {
     });
 });
 
+app.delete('/api/v1/sets/:id', (request, response) => {
+  const { id } = request.params;
+  database('sets')
+    .where({ inc_id: id })
+    .del()
+    .then(set => {
+      response.status(201).json({ inc_id: id })
+    })
+    .catch(error => {
+      response.status(422).json({ error })
+    })
+})
+
 // themes
 app.get('/api/v1/themes', (request, response) => {
   database('themes').select()
@@ -91,6 +101,11 @@ app.get('/api/v1/themes/:id', (request, response) => {
       const selectedTheme = themes.find((theme) => {
         return theme.id === parseInt(id)
       })
+      if (!selectedTheme) {
+        response.status(404).send({
+          error: 'The theme data you are looking for can not be found. Please try another theme id.'
+        });
+      }
       response.status(200).json(selectedTheme);
     })
     .catch((error) => {
@@ -117,6 +132,19 @@ app.post('/api/v1/themes', (request, response) => {
       response.status(500).json({ error });
     });
 });
+
+app.delete('/api/v1/themes/:id', (request, response) => {
+  const { id } = request.params;
+  database('themes')
+    .where({ inc_id: id })
+    .del()
+    .then(set => {
+      response.status(201).json({ inc_id: id })
+    })
+    .catch(error => {
+      response.status(422).json({ error })
+    })
+})
 
 app.listen(app.get('port'), () => {
   console.log(`${app.locals.title} is running on http://localhost:${app.get('port')}.`);
