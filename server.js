@@ -1,13 +1,6 @@
 const express = require('express');
 const app = express();
 
-// data test
-// const setsData = require('./data/setsData.json');
-// const themesData = require('./data/themesData.json');
-//
-// console.log('hello', setsData.length)
-// console.log('yay', themesData.length)
-
 app.set('port', process.env.PORT || 3000);
 
 app.use(express.json());

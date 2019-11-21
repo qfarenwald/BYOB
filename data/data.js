@@ -3,6 +3,14 @@ const setsDataCSV = 'sets.csv';
 const themesDataCSV = 'themes.csv';
 var fs = require('fs');
 
+const cleanSets = sets => {
+  sets = JSON.parse(sets)
+  return sets.map((set) => {
+    set.set_num = set.set_num.replace(/-/gi, '');
+    return JSON.stringify(set)
+  })
+}
+
 // setsData
 csv()
   .fromFile(setsDataCSV)
@@ -11,7 +19,10 @@ csv()
     return JSON.stringify(jsonObj)
   })
   .then((jsonArr) => {
-    fs.writeFile('setsData.json', jsonArr, (err) => {
+    return cleanSets(jsonArr)
+  })
+  .then((jsonCleanArr) => {
+    fs.writeFile('setsData.json', jsonCleanArr, (err) => {
       if (err) throw err;
       console.log('Data is now written to the file')
     })

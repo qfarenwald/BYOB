@@ -11,7 +11,7 @@ exports.up = function(knex) {
     }),
     knex.schema.createTable('sets', function(table) {
       table.increments('inc_id').primary();
-      table.integer('set_num');
+      table.string('set_num');
       table.string('name');
       table.integer('year');
       table.integer('theme_id').unsigned();
