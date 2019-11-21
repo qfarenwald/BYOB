@@ -121,7 +121,7 @@ app.post('/api/v1/themes', (request, response) => {
     if (!theme[requiredParameter]) {
       return response
         .status(422)
-        .send({ error: `Expected format: { id: <Integer>, name: <String>, parent_id: <Integer>. You're missing a "${requiredParameter}" property.` });
+        .send({ error: `Expected format: { id: <Integer>, name: <String>, parent_id: <Integer> }. You're missing a "${requiredParameter}" property.` });
     }
   }
   database('themes').insert(theme, 'inc_id')
