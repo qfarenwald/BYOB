@@ -41,9 +41,6 @@ app.get('/api/v1/sets/:id', (request, response) => {
           error: 'The set data you are looking for can not be found. Please try another set id.'
         });
       }
-      return selectedSet
-    })
-    .then((selectedSet) => {
       response.status(200).json(selectedSet);
     })
     .catch((error) => {
@@ -104,6 +101,11 @@ app.get('/api/v1/themes/:id', (request, response) => {
       const selectedTheme = themes.find((theme) => {
         return theme.id === parseInt(id)
       })
+      if (!selectedTheme) {
+        response.status(404).send({
+          error: 'The theme data you are looking for can not be found. Please try another theme id.'
+        });
+      }
       response.status(200).json(selectedTheme);
     })
     .catch((error) => {
