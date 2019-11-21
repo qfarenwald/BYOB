@@ -9,7 +9,6 @@ exports.up = function(knex) {
       table.integer('parent_id');
       table.timestamps(true, true);
     }),
-
     knex.schema.createTable('sets', function(table) {
       table.increments('inc_id').primary();
       table.integer('set_num');
@@ -22,11 +21,9 @@ exports.up = function(knex) {
     })
   ])
 };
-
 exports.down = function(knex) {
   return Promise.all([
     knex.schema.dropTable('sets'),
     knex.schema.dropTable('themes')
   ])
-
 };
