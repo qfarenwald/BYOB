@@ -1,4 +1,4 @@
-const setsData = require('../../../data/setsData.js');
+const setsData = require('../../../data/setsData.json');
 
 const createSet = (knex, set) => {
   return knex('sets').insert({
