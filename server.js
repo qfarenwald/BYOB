@@ -55,7 +55,6 @@ app.get('/api/v1/sets/:id', (request, response) => {
 
 app.post('/api/v1/sets', (request, response) => {
   const set = request.body;
-  console.log(set)
   for (let requiredParameter of ['set_num', 'name', 'year', 'theme_id', 'num_parts']) {
     if (!set[requiredParameter]) {
       return response
@@ -65,8 +64,7 @@ app.post('/api/v1/sets', (request, response) => {
   }
   database('sets').insert(set, 'inc_id')
     .then(set => {
-      console.log('hello')
-      response.status(201).json({ id: set[0] })
+      response.status(201).json({ inc_id: set[0] })
     })
     .catch(error => {
       response.status(500).json({ error });
@@ -100,6 +98,24 @@ app.get('/api/v1/themes/:id', (request, response) => {
         error: 'The theme data you are looking for can not be found. Please try another theme id.'
     });
   })
+});
+
+app.post('/api/v1/themes', (request, response) => {
+  const theme = request.body;
+  for (let requiredParameter of ['id', 'name', 'parent_id']) {
+    if (!theme[requiredParameter]) {
+      return response
+        .status(422)
+        .send({ error: `Expected format: { id: <Integer>, name: <String>, parent_id: <Integer>. You're missing a "${requiredParameter}" property.` });
+    }
+  }
+  database('themes').insert(theme, 'inc_id')
+    .then(theme => {
+      response.status(201).json({ inc_id: theme[0] })
+    })
+    .catch(error => {
+      response.status(500).json({ error });
+    });
 });
 
 app.listen(app.get('port'), () => {
