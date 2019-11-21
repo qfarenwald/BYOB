@@ -58,20 +58,21 @@ app.get('/api/v1/themes', (request, response) => {
   })
 });
 
-// app.get('/api/v1/themes/:id', (request, response) => {
-//   const { id } = request.params;
-//   const themes = app.locals.themes.find((theme) => {
-//     return theme.id === id
-//   })
-//
-//   if (!themes) {
-//     return response.status(404).send({
-//       error: 'The theme data you are looking for can not be found. Please try another theme id.'
-//     });
-//   }
-//
-//   response.status(200).json({ themes });
-// });
+app.get('/api/v1/themes/:id', (request, response) => {
+  const { id } = request.params;
+  database('themes').select()
+    .then((themes) => {
+      const selectedTheme = themes.find((theme) => {
+        return theme.id === parseInt(id)
+      })
+      response.status(200).json(selectedTheme);
+    })
+    .catch((error) => {
+      response.status(404).send({
+        error: 'The theme data you are looking for can not be found. Please try another theme id.'
+    });
+  })
+});
 
 app.listen(app.get('port'), () => {
   console.log(`${app.locals.title} is running on http://localhost:${app.get('port')}.`);
