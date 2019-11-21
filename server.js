@@ -34,15 +34,43 @@ app.get('/api/v1/sets/:id', (request, response) => {
   database('sets').select()
     .then((sets) => {
       const selectedSet = sets.find((set) => {
-        return set.theme_id === parseInt(id)
+        return set.inc_id === parseInt(id)
       })
+      if (!selectedSet) {
+        response.status(404).send({
+          error: 'The set data you are looking for can not be found. Please try another set id.'
+        });
+      }
+      return selectedSet
+    })
+    .then((selectedSet) => {
       response.status(200).json(selectedSet);
     })
     .catch((error) => {
       response.status(404).send({
-        error: 'The set data you are looking for can not be found. Please try another set id.'
+        error: 'There were problems connecting to the database.'
     });
   })
+});
+
+app.post('/api/v1/sets', (request, response) => {
+  const set = request.body;
+  console.log(set)
+  for (let requiredParameter of ['set_num', 'name', 'year', 'theme_id', 'num_parts']) {
+    if (!set[requiredParameter]) {
+      return response
+        .status(422)
+        .send({ error: `Expected format: { set_num: <String>, name: <String>, year: <Integer>, theme_id: <Integer>, num_parts: <Integer> }. You're missing a "${requiredParameter}" property.` });
+    }
+  }
+  database('sets').insert(set, 'inc_id')
+    .then(set => {
+      console.log('hello')
+      response.status(201).json({ id: set[0] })
+    })
+    .catch(error => {
+      response.status(500).json({ error });
+    });
 });
 
 // themes
