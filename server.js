@@ -29,20 +29,21 @@ app.get('/api/v1/sets', (request, response) => {
   })
 });
 
-// app.get('/api/v1/sets/:id', (request, response) => {
-//   const { id } = request.params;
-//   const sets = app.locals.sets.find((set) => {
-//     return set.theme_id === id
-//   })
-//
-//   if (!sets) {
-//     return response.status(404).send({
-//       error: 'The set data you are looking for can not be found. Please try another set id.'
-//     });
-//   }
-//
-//   response.status(200).json({ sets });
-// });
+app.get('/api/v1/sets/:id', (request, response) => {
+  const { id } = request.params;
+  database('sets').select()
+    .then((sets) => {
+      const selectedSet = sets.find((set) => {
+        return set.theme_id === parseInt(id)
+      })
+      response.status(200).json(selectedSet);
+    })
+    .catch((error) => {
+      response.status(404).send({
+        error: 'The set data you are looking for can not be found. Please try another set id.'
+    });
+  })
+});
 
 // themes
 app.get('/api/v1/themes', (request, response) => {
