@@ -131,6 +131,19 @@ app.post('/api/v1/themes', (request, response) => {
     });
 });
 
+app.delete('/api/v1/themes/:id', (request, response) => {
+  const { id } = request.params;
+  database('themes')
+    .where({ inc_id: id })
+    .del()
+    .then(set => {
+      response.status(201).json({ inc_id: id })
+    })
+    .catch(error => {
+      response.status(422).json({ error })
+    })
+})
+
 app.listen(app.get('port'), () => {
   console.log(`${app.locals.title} is running on http://localhost:${app.get('port')}.`);
 });
