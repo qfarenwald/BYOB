@@ -5,10 +5,10 @@ BYOB is a one week long solo project. It is intended as a way to get comfortable
 ### TOC
 - [Focuses](#focuses)
 - [API](#api)
+  - [Schema](#schema)
   - [Endpoints](#endpoints)
     - [Themes](#themes)
     - [Sets](#sets)
-- [Screenshots](#screenshots)
 - [Tech](#tech)
 - [Team](#team)
 - [Setup](#setup)
@@ -26,6 +26,12 @@ BYOB is a one week long solo project. It is intended as a way to get comfortable
 ### API
 
 BYOB uses Lego data. There are two tables, `themes` and `sets`. The `sets` table is connected to the `themes` table by the `theme_id`.
+
+#### Schema
+
+The overall data flow is mapped out below.
+
+![Schema Image](images/BYOB_schema.png)
 
 <div id='endpoints'/>
 #### Endpoints
@@ -266,21 +272,11 @@ BYOB uses Lego data. There are two tables, `themes` and `sets`. The `sets` table
 }
 ```
 
-### Screenshots
-
-Schema
-
-- To begin, the overall data flow is mapped out.
-
-![Schema Image](images/BYOB_schema.png)
-
 ### Tech
 
-- This project was bootstrapped with Create React App utilizing Redux.
+- This project was built with Express, Knex, and PostgreSQL.
 
-- Tested with Jest/Enzyme.
-
-- Links using React Router.
+- Deployed with Heroku.
 
 ### Team (solo)
 
