@@ -44,7 +44,7 @@ app.get('/api/v1/sets/:id', (request, response) => {
       response.status(200).json(selectedSet);
     })
     .catch((error) => {
-      response.status(404).send({
+      response.status(500).send({
         error: 'There were problems connecting to the database.'
     });
   })
@@ -109,8 +109,8 @@ app.get('/api/v1/themes/:id', (request, response) => {
       response.status(200).json(selectedTheme);
     })
     .catch((error) => {
-      response.status(404).send({
-        error: 'The theme data you are looking for can not be found. Please try another theme id.'
+      response.status(500).send({
+        error: 'There were problems connecting to the database.'
     });
   })
 });
@@ -121,7 +121,7 @@ app.post('/api/v1/themes', (request, response) => {
     if (!theme[requiredParameter]) {
       return response
         .status(422)
-        .send({ error: `Expected format: { id: <Integer>, name: <String>, parent_id: <Integer>. You're missing a "${requiredParameter}" property.` });
+        .send({ error: `Expected format: { id: <Integer>, name: <String>, parent_id: <Integer> }. You're missing a "${requiredParameter}" property.` });
     }
   }
   database('themes').insert(theme, 'inc_id')
