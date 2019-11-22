@@ -8,7 +8,15 @@ BYOB is a one week long solo project. It is intended as a way to get comfortable
   - [Schema](#schema)
   - [Endpoints](#endpoints)
     - [Themes](#themes)
+      - [GET all themes](#themesGETall)
+      - [GET one theme](#themesGETone)
+      - [POST a theme](#themesPOST)
+      - [DELETE a theme](#themesDELETE)
     - [Sets](#sets)
+      - [GET all sets](#setsGETall)
+      - [GET one set](#setsGETone)
+      - [POST a set](#setsPOST)
+      - [DELETE a set](#setsDELETE)
 - [Tech](#tech)
 - [Team](#team)
 - [Setup](#setup)
@@ -45,6 +53,8 @@ The overall data flow is mapped out below.
 
 **Themes**
 
+<div id='themesGETall'/>
+
 **GET** /api/v1/themes
 
 - Sample Response (ok) status: 200
@@ -76,6 +86,8 @@ The overall data flow is mapped out below.
 }
 ```
 
+<div id='themesGETone'/>
+
 **GET** /api/v1/themes/:id
 
 - Parameter (id) example: `/api/v1/themes/2`
@@ -103,6 +115,8 @@ The overall data flow is mapped out below.
     error: 'There were problems connecting to the database.'
 }
 ```
+
+<div id='themesPOST'/>
 
 **POST** /api/v1/themes
 
@@ -139,6 +153,8 @@ The overall data flow is mapped out below.
 }
 ```
 
+<div id='themesDELETE'/>
+
 **DELETE** /api/v1/themes/:id
 
 - Parameter (id) example: `/api/v1/themes/2`
@@ -156,7 +172,11 @@ The overall data flow is mapped out below.
 }
 ```
 
+<div id='sets'/>
+
 **Sets**
+
+<div id='setsGETall'/>
 
 **GET** /api/v1/sets
 
@@ -193,6 +213,8 @@ The overall data flow is mapped out below.
 }
 ```
 
+<div id='setsGETone'/>
+
 **GET** /api/v1/sets/:id
 
 - Parameter (id) example: `/api/v1/sets/105058`
@@ -222,6 +244,8 @@ The overall data flow is mapped out below.
     error: 'There were problems connecting to the database.'
 }
 ```
+
+<div id='setsPOST'/>
 
 **POST** /api/v1/sets
 
@@ -262,6 +286,8 @@ The overall data flow is mapped out below.
 }
 ```
 
+<div id='setsDELETE'/>
+
 **DELETE** /api/v1/sets/:id
 
 - Parameter (id) example: `/api/v1/sets/105058`
@@ -279,15 +305,21 @@ The overall data flow is mapped out below.
 }
 ```
 
+<div id='tech'/>
+
 ### Tech
 
 - This project was built with Express, Knex, and PostgreSQL.
 
 - Deployed with Heroku.
 
+<div id='team'/>
+
 ### Team (solo)
 
 - Quinne Farenwald (https://github.com/qfarenwald)
+
+<div id='setup'/>
 
 ### Set Up
 
