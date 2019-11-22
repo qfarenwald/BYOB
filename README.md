@@ -14,6 +14,7 @@ BYOB is a one week long solo project. It is intended as a way to get comfortable
 - [Setup](#setup)
 
 <div id='focuses'/>
+
 ### Focuses
 
 - Building a RESTful API for a large dataset.
@@ -23,9 +24,12 @@ BYOB is a one week long solo project. It is intended as a way to get comfortable
 - Deploying to Heroku.
 
 <div id='api'/>
+
 ### API
 
 BYOB uses Lego data. There are two tables, `themes` and `sets`. The `sets` table is connected to the `themes` table by the `theme_id`.
+
+<div id='schema'/>
 
 #### Schema
 
@@ -34,7 +38,10 @@ The overall data flow is mapped out below.
 ![Schema Image](images/BYOB_schema.png)
 
 <div id='endpoints'/>
+
 #### Endpoints
+
+<div id='themes'/>
 
 **Themes**
 
