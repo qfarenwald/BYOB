@@ -1,6 +1,6 @@
-# BYOB (Build Your Own Backend)
+# BYOB
 
-BYOB is a one week long solo project. It is intended as a way to get comfortable with building databases using Express, Knex, and PostgreSQL.
+Build Your Own Backend (BYOB) is a one week long solo project. It is intended as a way to get comfortable with building databases using Express, Knex, and PostgreSQL. My database was created using a portion of the [LEGO dataset](https://www.kaggle.com/rtatman/lego-database#sets.csv). My goal in using the themes and sets data was to allow users to search all of the sets within a certain theme if they are interested in building out their LEGO collection.
 
 ### TOC
 - [Focuses](#focuses)
@@ -85,12 +85,18 @@ The overall data flow is mapped out below.
     error: 'The themes data can not be found.'
 }
 ```
+- Sample Response (error) status: 500
+```
+{
+    error: 'There were problems connecting to the database.'
+}
+```
 
 <div id='themesGETone'/>
 
 **GET** /api/v1/themes/:id
 
-- Parameter (id) example: `/api/v1/themes/2`
+- Parameter (<id>) example: `/api/v1/themes/2`
 
 - Sample response (ok) status: 200
 ```
@@ -103,13 +109,13 @@ The overall data flow is mapped out below.
     "updated_at": "2019-11-21T18:03:54.486Z"
 }
 ```
-- Sample Response (error: incorrect or no id provided) status: 404
+- Sample Response (error) status: 404
 ```
 {
     error: 'The theme data you are looking for can not be found. Please try another theme id.'
 }
 ```
-- Sample Response (error: server down) status: 500
+- Sample Response (error) status: 500
 ```
 {
     error: 'There were problems connecting to the database.'
@@ -134,7 +140,7 @@ The overall data flow is mapped out below.
     <inc_id>: <id>
 }
 ```
-- Sample Response (error: incorrect body information provided) status: 422
+- Sample Response (error) status: 422
 ```
 {
     error: Expected format:
@@ -146,10 +152,10 @@ The overall data flow is mapped out below.
       You're missing a <requiredParameter> property.`
 }
 ```
-- Sample Response (error: server down) status: 500
+- Sample Response (error) status: 500
 ```
 {
-    error: default message
+    error: 'There were problems connecting to the database.'
 }
 ```
 
@@ -157,7 +163,7 @@ The overall data flow is mapped out below.
 
 **DELETE** /api/v1/themes/:id
 
-- Parameter (id) example: `/api/v1/themes/2`
+- Parameter (<id>) example: `/api/v1/themes/2`
 
 - Sample response (ok) status: 200
 ```
@@ -165,10 +171,16 @@ The overall data flow is mapped out below.
     <inc_id>: <id>
 }
 ```
-- Sample Response (error: incorrect or no id provided) status: 422
+- Sample Response (error) status: 422
 ```
 {
-    error: default message
+    error: 'The theme data you are looking for can not be found. Please try another set id.'
+}
+```
+- Sample Response (error) status: 500
+```
+{
+    error: 'There were problems connecting to the database.'
 }
 ```
 
@@ -212,12 +224,18 @@ The overall data flow is mapped out below.
     error: 'The sets data can not be found.'
 }
 ```
+- Sample Response (error) status: 500
+```
+{
+    error: 'There were problems connecting to the database.'
+}
+```
 
 <div id='setsGETone'/>
 
 **GET** /api/v1/sets/:id
 
-- Parameter (id) example: `/api/v1/sets/105058`
+- Parameter (<inc_id>) example: `/api/v1/sets/105058`
 
 - Sample response (ok) status: 200
 ```
@@ -232,13 +250,13 @@ The overall data flow is mapped out below.
     "updated_at": "2019-11-21T20:34:27.647Z"
 }
 ```
-- Sample Response (error: incorrect or no id provided) status: 404
+- Sample Response (error) status: 404
 ```
 {
     error: 'The set data you are looking for can not be found. Please try another set id.'
 }
 ```
-- Sample Response (error: server down) status: 500
+- Sample Response (error) status: 500
 ```
 {
     error: 'There were problems connecting to the database.'
@@ -265,7 +283,7 @@ The overall data flow is mapped out below.
     <inc_id>: <id>
 }
 ```
-- Sample Response (error: incorrect body information provided) status: 422
+- Sample Response (error) status: 422
 ```
 {
     error: Expected format:
@@ -279,10 +297,10 @@ The overall data flow is mapped out below.
       You're missing a <requiredParameter> property.`
 }
 ```
-- Sample Response (error: server down) status: 500
+- Sample Response (error) status: 500
 ```
 {
-    error: default message
+    error: 'There were problems connecting to the database.'
 }
 ```
 
@@ -290,7 +308,7 @@ The overall data flow is mapped out below.
 
 **DELETE** /api/v1/sets/:id
 
-- Parameter (id) example: `/api/v1/sets/105058`
+- Parameter (<inc_id>) example: `/api/v1/sets/105058`
 
 - Sample response (ok) status: 200
 ```
@@ -298,10 +316,16 @@ The overall data flow is mapped out below.
     <inc_id>: <id>
 }
 ```
-- Sample Response (error: incorrect or no id provided) status: 422
+- Sample Response (error) status: 404
 ```
 {
-    error: default message
+    error: 'The set data you are looking for can not be found. Please try another set id.'
+}
+```
+- Sample Response (error) status: 500
+```
+{
+    error: 'There were problems connecting to the database.'
 }
 ```
 
