@@ -19,7 +19,7 @@ Build Your Own Backend (BYOB) is a one week long solo project. It is intended as
       - [DELETE a set](#setsDELETE)
 - [Tech](#tech)
 - [Team](#team)
-- [Setup](#setup)
+- [GitHub Project Board](#projectboard)
 
 <div id='focuses'/>
 
@@ -343,11 +343,8 @@ The overall data flow is mapped out below.
 
 - Quinne Farenwald (https://github.com/qfarenwald)
 
-<div id='setup'/>
+<div id='projectboard'/>
 
-### Set Up
+### GitHub Project Board
 
-Instructions
-```
-example command
-```
+- https://github.com/qfarenwald/BYOB/projects/1
