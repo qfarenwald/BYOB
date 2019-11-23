@@ -163,7 +163,7 @@ The overall data flow is mapped out below.
 
 **DELETE** /api/v1/themes/:id
 
-- Parameter (<id>) example: `/api/v1/themes/2`
+- Parameter (<inc_id>) example: `/api/v1/themes/2`
 
 - Sample response (ok) status: 200
 ```
@@ -174,7 +174,7 @@ The overall data flow is mapped out below.
 - Sample Response (error) status: 422
 ```
 {
-    error: 'The theme data you are looking for can not be found. Please try another set id.'
+    error: 'The theme data you are looking for can not be found in order to delete. Please try another set id.'
 }
 ```
 - Sample Response (error) status: 500
@@ -319,7 +319,7 @@ The overall data flow is mapped out below.
 - Sample Response (error) status: 404
 ```
 {
-    error: 'The set data you are looking for can not be found. Please try another set id.'
+    error: 'The theme data you are looking for can not be found in order to delete. Please try another set id.'
 }
 ```
 - Sample Response (error) status: 500

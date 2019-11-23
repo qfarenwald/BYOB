@@ -83,7 +83,7 @@ app.delete('/api/v1/sets/:id', (request, response) => {
     .then(set => {
       if (!set) {
         return response.status(404).send({
-          error: 'The set data you are looking for can not be found. Please try another set id.'
+          error: 'The theme data you are looking for can not be found in order to delete. Please try another set id.'
         });
       }
       response.status(200).json({ inc_id: id })
@@ -162,7 +162,7 @@ app.delete('/api/v1/themes/:id', (request, response) => {
     .then(theme => {
       if (!theme) {
         return response.status(404).send({
-          error: 'The theme data you are looking for can not be found. Please try another set id.'
+          error: 'The theme data you are looking for can not be found in order to delete. Please try another set id.'
         });
       }
       response.status(200).json({ inc_id: id })
