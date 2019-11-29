@@ -1,6 +1,7 @@
 # BYOB
 
-Build Your Own Backend (BYOB) is a one week long solo project. It is intended as a way to get comfortable with building databases using Express, Knex, and PostgreSQL. My database was created using a portion of the [LEGO dataset](https://www.kaggle.com/rtatman/lego-database#sets.csv). My goal in using the themes and sets data was to allow users to search all of the sets within a certain theme if they are interested in building out their LEGO collection.
+Build Your Own Backend (BYOB) is a one week long solo project. It is intended as a way to get comfortable with building databases using Express, Knex, and PostgreSQL. My database was created using a portion of the [LEGO dataset](https://www.kaggle.com/rtatman/lego-database#sets.csv). My goal in using the themes and sets data was to allow users to search all of the sets within a certain theme if they are interested in building out their LEGO collection. I chose to use a small portion of a larger schema mapped out by Rachael Tatman, the creator of the LEGO dataset, perhaps a future iteration may include more tables from this set.
+
 
 ### TOC
 - [Focuses](#focuses)
@@ -44,6 +45,10 @@ BYOB uses Lego data. There are two tables, `themes` and `sets`. The `sets` table
 The overall data flow is mapped out below.
 
 ![Schema Image](images/BYOB_schema.png)
+
+The full dataset schema created by Rachael Tatman, the creator of the LEGO dataset, shown below.
+
+![Schema Image](images/downloads_schema.png)
 
 <div id='endpoints'/>
 
